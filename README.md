@@ -13,7 +13,7 @@ W ramach kursu *Interdyscyplinarny projekt zespołowy* przez 15 tygodni w grupie
 + implementacja oprogramowania z systemem wizyjnym
 
 ## 3. Plan projektu
-Szczegółowy plan projektu dostępny jest [tutaj](https://github.com/AitenAndGo/IPZ "tutaj!")
+Szczegółowy plan projektu dostępny jest [tutaj]([https://github.com/AitenAndGo/IPZ](https://github.com/AitenAndGo/IPZ/blob/main/Documentation/Plan.txt) "tutaj!")
 
 ## 4. Technologie
 + Spis elementów użytych w projekcie
