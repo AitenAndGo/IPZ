@@ -23,5 +23,6 @@ Szczegółowy plan projektu dostępny jest [tutaj](https://github.com/AitenAndGo
   - NX (lub inny program do projektowania 3D)
   - Python
   - itd
+    
 ___
 # Realizacja
