@@ -116,9 +116,6 @@ while(True):
     edgesInDetectionWindow = cv.bitwise_and(lines, detectionWindow)
     cv.imshow("edgesInDetectionWindow", edgesInDetectionWindow)
 
-    # calculate a line in the middle of the road
-    # middleLine, x = findMiddleLine(edgesInDetectionWindow)
-
     # draw road shape
     road = roadShape(edgesInDetectionWindow)
     dir = calculateDirection(road)
