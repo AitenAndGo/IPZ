@@ -4,8 +4,6 @@ import cv2 as cv
 import pygetwindow as gw
 import pyautogui as mouse
 import threading
-import time
-# from sklearn.linear_model import LinearRegression
 
 dir = 0
 Stop = False
