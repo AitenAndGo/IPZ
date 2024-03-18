@@ -64,8 +64,6 @@ window = gw.getWindowsWithTitle(window_title)[0]
 
 left, top, right, bottom = window.left, window.top, window.right, window.bottom
 
-# print(f'left: {left}, right: {right}, top: {top}, bottom: {bottom}')
-
 # activate window and press 'w' to drive forward
 mouse.click(left + 50, top + 50)
 mouse.keyDown('w')
