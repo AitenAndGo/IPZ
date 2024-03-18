@@ -3,7 +3,9 @@ import numpy as np
 import cv2 as cv
 import pygetwindow as gw
 import pyautogui as mouse
+import keyboard
 import threading
+import time
 
 dir = 0
 Stop = False
@@ -34,16 +36,16 @@ def carControl():
     forward = False
     while True and  not Stop:
         print(dir)
-        if dir > 12 and not rightTurn:
-            mouse.press('d')
-            mouse.keyDown('a')
+        if dir > -12 and not rightTurn:
+            keyboard.release('d')
+            keyboard.press('a')
             rightTurn = True
             leftTurn = False
             forward = False
             print('prawo')
-        elif dir < -12 and not leftTurn:
-            mouse.press('a')
-            mouse.keyDown('d')
+        elif dir < 12 and not leftTurn:
+            keyboard.release('a')
+            keyboard.press('d')
             rightTurn = False
             leftTurn = True
             forward = False
@@ -52,8 +54,8 @@ def carControl():
             rightTurn = False
             leftTurn = False
             forward = True
-            mouse.keyUp('d')
-            mouse.keyUp('a')
+            keyboard.release('d')
+            keyboard.release('a')
             print('forward')
         # time.sleep(0.1)
 
@@ -99,13 +101,6 @@ while(True):
         carControl_thread.join()
         cv.destroyAllWindows()
         break
-
-    # blur the image for better results
-    # blur = cv.GaussianBlur(frame, (5, 5), 5)
-
-    # use edge detection filter    
-    # edges = cv.Canny(blur, 120, 160)
-    # cv.imshow("edges", edges)
 
     ret, lines = cv.threshold(frame, 50, 255, cv.THRESH_BINARY_INV)
     cv.imshow("threshold", lines)
