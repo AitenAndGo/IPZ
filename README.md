@@ -26,3 +26,8 @@ Szczegółowy plan projektu dostępny jest [tutaj](https://github.com/AitenAndGo
     
 ___
 # Realizacja
+
+# SIMULATION VIDEO:
+https://github.com/AitenAndGo/IPZ/assets/87769038/a0adc0f1-8832-4500-9a60-e44e0641514c
+
+
