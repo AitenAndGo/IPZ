@@ -6,9 +6,36 @@ import pyautogui as mouse
 import keyboard
 import threading
 import time
+import random
 
 dir = 0
 Stop = False
+hold = False
+isTurning = False
+TurnCarAtCrossroad = None
+lock = threading.Lock()
+
+def isCrossroad(img, left, right, forward, lpix, rpix, fpix):
+    ra = cv.bitwise_and(img, right)
+    la = cv.bitwise_and(img, left)
+    fa = cv.bitwise_and(img, forward)
+
+    rp = len(np.argwhere(ra > 0)) / lpix
+    lp = len(np.argwhere(la > 0)) / rpix
+    fp = len(np.argwhere(fa > 0)) / fpix
+
+    turn = []
+    if rp > 0.97:
+        turn.append('right')
+        # print(right)
+    if lp > 0.97:
+        turn.append('left')
+        # print(left)
+    if fp > 0.97:
+        turn.append('forward')
+        # print(forward)
+
+    return turn 
 
 def roadShape(image):
     blank = np.zeros((image.shape[0], image.shape[1]), dtype='uint8')
@@ -17,9 +44,13 @@ def roadShape(image):
     points = np.array([points], dtype=np.int32)
     # print(points)
     # points = np.rot90(points, k=-1)
-    road = cv.fillPoly(blank, points, 255)
-    cv.imshow("road", road)
-    return road
+    # print(len(points[0]))
+    if len(points[0]) >= 3:
+        road = cv.fillPoly(blank, points, 255)
+        cv.imshow("road", road)
+        return road
+    else:
+        return blank
 
 def calculateDirection(img):
     leftHalf = img[:, :img.shape[1]//2]
@@ -30,34 +61,47 @@ def calculateDirection(img):
     # print(dir)
     return dir
 
+def turnCar(dir):
+    if dir == 'left':
+        keyboard.release('d')
+        keyboard.press('a')
+    elif dir == 'right':
+        keyboard.release('a')
+        keyboard.press('d')
+    elif dir == 'forward':
+        keyboard.release('d')
+        keyboard.release('a')
+
 def carControl():
+    global isTurning
+    global hold
     leftTurn = False
     rightTurn = False
     forward = False
-    while True and  not Stop:
-        print(dir)
-        if dir > -12 and not rightTurn:
-            keyboard.release('d')
-            keyboard.press('a')
-            rightTurn = True
-            leftTurn = False
-            forward = False
-            print('prawo')
-        elif dir < 12 and not leftTurn:
-            keyboard.release('a')
-            keyboard.press('d')
-            rightTurn = False
-            leftTurn = True
-            forward = False
-            print('lewo')
-        elif -12 < dir < 12 and not forward:
-            rightTurn = False
-            leftTurn = False
-            forward = True
-            keyboard.release('d')
-            keyboard.release('a')
-            print('forward')
-        # time.sleep(0.1)
+    while True and not Stop:
+        # print(dir)
+        if not hold:
+            if isTurning:
+                turnCar(TurnCarAtCrossroad)
+                time.sleep(1.1)
+                with lock:
+                    isTurning = False
+            elif dir > -6 and not rightTurn:
+                turnCar('left')
+                rightTurn = True
+                leftTurn = False
+                forward = False
+            elif dir < 6 and not leftTurn:
+                turnCar('right')
+                rightTurn = False
+                leftTurn = True
+                forward = False
+            elif -6 < dir < 6 and not forward:
+                turnCar('forward')
+                rightTurn = False
+                leftTurn = False
+                forward = True
+            time.sleep(0.01)
 
 
 # get window positions
@@ -68,7 +112,7 @@ left, top, right, bottom = window.left, window.top, window.right, window.bottom
 
 # activate window and press 'w' to drive forward
 mouse.click(left + 50, top + 50)
-mouse.keyDown('w')
+keyboard.press('w')
 
 # line detection window
 width = (right - 7) - (left + 7)
@@ -86,9 +130,51 @@ vertices = np.array([vertices], dtype=np.int32)
 cv.fillConvexPoly(detectionWindow, vertices, 255)
 cv.imshow("polygon", detectionWindow)
 
+# crossroad
+
+# right turn check polygon
+leftTurnWindow = np.zeros((height, width), dtype='uint8')
+
+leftBottom = (int(0), int(0.9 * height))
+rightBottom = (int((0.1) * width), int(0.9 * height))
+leftTop = (int(0), int(0.6 * height))
+rightTop = (int((0.1) * width), int(0.6 * height))
+vertices = [leftBottom, rightBottom, rightTop, leftTop]
+vertices = np.array([vertices], dtype=np.int32)
+cv.fillConvexPoly(leftTurnWindow, vertices, 255)
+cv.imshow("leftTurn", leftTurnWindow)
+leftPixels = len(np.argwhere(leftTurnWindow > 0))
+
+# left turn check polygon
+rightTurnWindow = np.zeros((height, width), dtype='uint8')
+
+leftBottom = (int(width), int(0.9 * height))
+rightBottom = (int((0.9) * width), int(0.9 * height))
+leftTop = (int(width), int(0.6 * height))
+rightTop = (int((0.9) * width), int(0.6 * height))
+vertices = [leftBottom, rightBottom, rightTop, leftTop]
+vertices = np.array([vertices], dtype=np.int32)
+cv.fillConvexPoly(rightTurnWindow, vertices, 255)
+cv.imshow("rightTurn", rightTurnWindow)
+rightPixels = len(np.argwhere(rightTurnWindow > 0))
+
+# go forward check polygon
+forwardWindow = np.zeros((height, width), dtype='uint8')
+
+leftBottom = (int(0.48 * width), int(0.3 * height))
+rightBottom = (int((0.52) * width), int(0.3 * height))
+leftTop = (int(0.43 * width), int(0.45 * height))
+rightTop = (int((0.58) * width), int(0.45 * height))
+vertices = [leftBottom, rightBottom, rightTop, leftTop]
+vertices = np.array([vertices], dtype=np.int32)
+cv.fillConvexPoly(forwardWindow, vertices, 255)
+cv.imshow("forward", forwardWindow)
+forwardPixels = len(np.argwhere(forwardWindow > 0))
+
+ 
+
 carControl_thread = threading.Thread(target=carControl)
 carControl_thread.start()
-
 
 #loop every frame
 while(True):
@@ -112,3 +198,27 @@ while(True):
     # draw road shape
     road = roadShape(edgesInDetectionWindow)
     dir = calculateDirection(road)
+
+    # check for crossroads
+    turns = isCrossroad(lines, leftTurnWindow, rightTurnWindow, forwardWindow,
+                                    leftPixels, rightPixels, forwardPixels)
+    if len(turns) <= 1:
+        pass
+        # isTurning = False
+        # print("none")
+    elif not isTurning:
+        # todo
+        # turn in random possible direction
+        turn = random.choice(turns)
+        with lock:
+            hold = True
+        keyboard.release('w')
+        keyboard.release('a')
+        keyboard.release('d')
+        print('Intersection! turn: ' + turn)
+        time.sleep(3)
+        keyboard.press('w')
+        with lock:
+            hold = False
+            isTurning = True
+            TurnCarAtCrossroad = turn
