@@ -16,7 +16,7 @@ week 2 (12.03.2024):
 week 3 (19.03.2024):
 	model 3d pojazdu, lista zakupów
 week 4 (26.03.2024, Wielkanoc):
-	wydruk modelu pojazdu
+	wydruk modelu pojazdu, excel, sql, nagranie z sim
 week 5 (09.04.2024):
 	złożenie samochodu, nie jeździ (elektronika i mikroprocesor).
 week 6 (16.04.2024):
