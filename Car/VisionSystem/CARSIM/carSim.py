@@ -42,9 +42,6 @@ def roadShape(image):
     points = np.argwhere(image > 0)
     points[:, [0, 1]] = points[:, [1, 0]]
     points = np.array([points], dtype=np.int32)
-    # print(points)
-    # points = np.rot90(points, k=-1)
-    # print(len(points[0]))
     if len(points[0]) >= 3:
         road = cv.fillPoly(blank, points, 255)
         cv.imshow("road", road)
@@ -112,7 +109,7 @@ left, top, right, bottom = window.left, window.top, window.right, window.bottom
 
 # activate window and press 'w' to drive forward
 mouse.click(left + 50, top + 50)
-keyboard.press('w')
+# keyboard.press('w')
 
 # line detection window
 width = (right - 7) - (left + 7)
@@ -211,7 +208,7 @@ while(True):
         # turn in random possible direction
         turn = random.choice(turns)
         with lock:
-            hold = True
+            hold = Trueco
         keyboard.release('w')
         keyboard.release('a')
         keyboard.release('d')
