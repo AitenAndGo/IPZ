@@ -30,4 +30,10 @@ ___
 # SIMULATION VIDEO:
 [kliknij aby obejrzeć](https://github.com/AitenAndGo/IPZ/assets/87769038/a0adc0f1-8832-4500-9a60-e44e0641514c "tutaj!")
 
+# REMOTLY CONTROLLED CAMERA TEST
+https://github.com/AitenAndGo/IPZ/assets/87769038/37e9659a-60ab-4ea5-bf75-93e4743b6fed
+
+
+
+
 
