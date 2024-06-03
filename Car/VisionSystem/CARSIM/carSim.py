@@ -1,3 +1,13 @@
+    # todo:     # zabierz ten sleep i dodaj żeby skręcał do czasu aż nie będzie znów tylko jednej drogi
+    # todo:     # i może też poprawić to w jaki sposób się zlicza ile jest dróg
+    # todo:     # skręcanie zrobić dla kąta a nie min/max
+    # todo:     # upgrade całego kodu do wersji na raspberkę
+    # todo:     # upgrade kodu na bardziej czytelny
+    # todo:     # dodać nowy widok z góry, bardziej przejzryste i rusowanie trajektori na żywo
+    
+    
+    
+
 from PIL import ImageGrab
 import numpy as np
 import cv2 as cv
@@ -109,7 +119,7 @@ left, top, right, bottom = window.left, window.top, window.right, window.bottom
 
 # activate window and press 'w' to drive forward
 mouse.click(left + 50, top + 50)
-# keyboard.press('w')
+keyboard.press('w')
 
 # line detection window
 width = (right - 7) - (left + 7)
@@ -204,11 +214,9 @@ while(True):
         # isTurning = False
         # print("none")
     elif not isTurning:
-        # todo
-        # turn in random possible direction
         turn = random.choice(turns)
         with lock:
-            hold = Trueco
+            hold = True
         keyboard.release('w')
         keyboard.release('a')
         keyboard.release('d')
