@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPZ CAR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .button {
+            padding: 5px 10px;
+            font-size: 14px;
+            margin-right: 10px;
+            text-decoration: none;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button.stop {
+            background-color: #ff6666; /* Lighter red */
+        }
+        .button.start {
+            background-color: #66cc66; /* Lighter green */
+        }
+        .data-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .data-box {
+            width: 30%;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 0 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .server-table th:nth-child(4), .server-table td:nth-child(4),
+        .server-table th:nth-child(5), .server-table td:nth-child(5) {
+            width: 250px; /* Adjusted value */
+        }
+        /* Add specific font-size to the startTime and stopTime cells */
+        .server-table td:nth-child(4), .server-table td:nth-child(5) {
+            font-size: 11px; /* Zmień na odpowiednią wielkość czcionki */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="data-container">
+            <div class="data-box">
+                <h3>Cars</h3>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>UUID</th>
+                        <th>Is Driving</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for car in table2_data %}
+                    <tr>
+                        <td>{{ car.id }}</td>
+                        <td>{{ car.uuid }}</td>
+                        <td>{{ car.isDriving }}</td>
+                        <td>
+                            {% if car.isDriving %}
+                            <a href="https://miszczak13.eu.pythonanywhere.com/stopCar/{{ car.id }}" class="button stop">Stop Car</a>
+                            {% else %}
+                            <a href="https://miszczak13.eu.pythonanywhere.com/startCar/{{ car.id }}" class="button start">Start Car</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="data-box">
+                <h3>Server</h3>
+                <table class="server-table">
+                    <tr>
+                        <th>ID</th>
+                        <th>Car ID</th>
+                        <th>City ID</th>
+                        <th>Start Time</th>
+                        <th>Stop Time</th>
+                    </tr>
+                    {% for server in table1_data %}
+                    <tr>
+                        <td>{{ server.id }}</td>
+                        <td>{{ server.car_id }}</td>
+                        <td>{{ server.city_id }}</td>
+                        <td>{{ server.startTime }}</td>
+                        <td>{{ server.stopTime }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="data-box">
+                <h3>City Traffic</h3>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Car ID</th>
+                        <th>Time of Stop</th>
+                        <th>Sensor ID</th>
+                    </tr>
+                    {% for trafic in table3_data %}
+                    <tr>
+                        <td>{{ trafic.id }}</td>
+                        <td>{{ trafic.car_id }}</td>
+                        <td>{{ trafic.timeofstop }}</td>
+                        <td>{{ trafic.sensor_id }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
