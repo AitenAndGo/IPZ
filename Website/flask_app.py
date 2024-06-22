@@ -15,6 +15,7 @@ import itertools
 import random
 import string
 #import pytz
+import socket
 
 CITY_ID = 0
 
@@ -140,6 +141,9 @@ def post_car():
 
 
 
+######################################
+# TUTAJ COŚ JEST Z TĄ DATĄ NIE TO CO TRZEBA
+
 def start_driving(car_id):
     try:
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -152,6 +156,15 @@ def start_driving(car_id):
         return {"error": str(e)}, 500
 
 
+
+def stop_driving():
+    a=2
+    # po naciśnięciu przycisku stop samochód się zatrzymuje -> dopisujemy czas zatrzymania oraz zmieniamy isDriving na False
+    return
+
+
+
+###################################################
 
 
 
@@ -210,8 +223,6 @@ def start_car(id):
     if car:
         car.isDriving = True
         db.session.commit()
-        # połączenie z raspberry i odpalenie jeżdżenia
-
 
 
         # Dodanie nowego rekordu do tabeli Server
@@ -225,18 +236,23 @@ def start_car(id):
         return jsonify({"error": f"Car with id {id} not found."}), 404
 
 
+@app.route('/get_car_status', methods=['GET'])
+def get_car_status():
+    uuid = request.args.get('uuid')  # Pobierz uuid z parametrów URL
+    if not uuid:
+        return jsonify({"error": "Parameter 'uuid' is required."}), 400
+
+    # Znajdź samochód w bazie danych na podstawie uuid
+    car = Car.query.get(4)
+    if not car:
+        return jsonify({"error": f"Car with uuid '{uuid}' not found."}), 405
+
+    # Utwórz odpowiedź JSON z statusem isDriving
+    response = {
+        "uuid": car.uuid,
+        "isDriving": car.isDriving
+    }
+    return jsonify(response)
+
 
 # autorefresh do każdego requesta (?)
-
-
-
-
-
-
-
-
-
-
-
-
-
