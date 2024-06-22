@@ -44,7 +44,11 @@ Poniżej pewne zdjęcia i filmy przedstawiające proces powstawania makiety:
 Makieta zwana przez nas "miastem" pełni w tym projekcie wiele aspektów. Odpowiada ona za odpowiednie przełączanie świateł, komunikuje się z serverem i przesyła informacje o odczytanych przejazdach samochodu, oraz musi komunikować się z samochodem aby informować go w momencie gdy przejeżdża on przez skrzyżowanie czy aktualne światło mu na to zezwala. Wszelkie kody można znaleźć w katalogu projektu i powinny one wyjaśnić wszelkie niepewności.
 
 ## Strona internetowa
-tutaj dopisz i jakieś foto czy film ewnetulanie
+Projekt miał być tak zrobiony, że w teorii można by było wiele samochodów puścić po podobnej makiecie, tylko większej. W związku z tym na serwerze python-anywhere postawiono bardzo prostą stronę internetową (Flask + HTML) oraz podłączono do niej relacyjną bazę danych (MySQL). Baza ta ma 3 tabele: Car, Server oraz City_Trafic. W pierwszej tabeli są wszystkie samochody, które mogą jeździć po makiecie - każdy ma swoje ID oraz status isDriving (czy aktualnie ejst w trakcie jazdy). Dodatkowo przy każdy są przyciski START i STOP - samochody maja być autonomiczne i można nimi sterowac z poziomu strony internetowej, klikając w przycisk Start samochód o danym ID startuje. Druga tabela Server przechowuje informacje o tym, o której godzinie zaczął i skończył jazdę samochód o danym ID w mieście o danym ID. Trzecia tabela to jest kontrola, o której godzinie samochód o danym ID przejechał przez światła (w naszym projekcie były 4: Północ, Południe, Wschód i Zachód).
+
+![image](https://github.com/AitenAndGo/IPZ/assets/162838502/638bd2ca-8b7d-4f4d-9859-aacf12b32e23)
+
+![Screenshot 2024-06-22 20-27-15](https://github.com/AitenAndGo/IPZ/assets/162838502/014e0569-f480-4ba3-9c5f-1529e88d7c2f)
 
 ## Samochód
 Na samochód składają się w sumie 4 części:
