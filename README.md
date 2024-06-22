@@ -1,3 +1,7 @@
+# PROJEKT AUTONOMICZENGO SAMOCHODU:
+[kliknij aby obejrzeć](url_do_filmu)
+
+
 # Projekt autonomicznego samochodu 
 
 Celem projektu będzie stworzenie autonomicznego modelu samochodu potrafiącego poruszać się po makiecie miasta ze skrzyżowaniem i światłami, samochód będzie w stanie sam poruszać się po drodze, odpowiednio reagować na światła drogowe, oraz podejmować decyzje o swojej trasie.
@@ -17,8 +21,6 @@ W ramach kursu *Interdyscyplinarny projekt zespołowy* przez 15 tygodni w grupie
 ## 3. Plan projektu
 Szczegółowy plan projektu dostępny jest [tutaj](https://github.com/AitenAndGo/IPZ/blob/main/Documentation/Plan.txt "tutaj!")
 
-# PROJEKT AUTONOMICZENGO SAMOCHODU:
-[kliknij aby obejrzeć](url_do_filmu)
     
 ___
 # Realizacja
