@@ -44,8 +44,7 @@ Poniżej pewne zdjęcia i filmy przedstawiające proces powstawania makiety:
 Makieta zwana przez nas "miastem" pełni w tym projekcie wiele aspektów. Odpowiada ona za odpowiednie przełączanie świateł, komunikuje się z serverem i przesyła informacje o odczytanych przejazdach samochodu, oraz musi komunikować się z samochodem aby informować go w momencie gdy przejeżdża on przez skrzyżowanie czy aktualne światło mu na to zezwala. Wszelkie kody można znaleźć w katalogu projektu i powinny one wyjaśnić wszelkie niepewności.
 
 ## Strona internetowa
-
-## Strona internetowa
+tutaj dopisz i jakieś foto czy film ewnetulanie
 
 ## Samochód
 Na samochód składają się w sumie 4 części:
