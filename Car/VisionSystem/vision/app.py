@@ -130,13 +130,27 @@ def calculateDirection(img):
     # print(dir)
     return dir
 
+def process_frame(frame):
+    frame = cv2.flip(frame, 0)
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    frame = cv2.GaussianBlur(frame, (11, 11), 0)
+    ret, frame = cv2.threshold(frame, 85, 255, cv2.THRESH_BINARY)
+
+    frame = cv2.flip(frame, 0)
+    frame = cv2.Laplacian(frame,cv2.CV_64F)
+    # edges = cv2.Canny(laplacian,10,80)
+    # kernel = np.ones((5, 5), np.uint8)
+    # mask_road = cv2.morphologyEx(edges, cv2.MORPH_CLOSE, kernel)
+    # mask_road = cv2.morphologyEx(edges, cv2.MORPH_OPEN, kernel)
+    return frame
+
 def gen_frames():
     while True:
         succes, frame = camera.read()
         if not succes:
             pass
         else:
-            # frame = process_frame(frame)
+            frame = process_frame(frame)
             frame = cv2.flip(frame, 0)
             # frame = perspective2TopDown(frame)
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
