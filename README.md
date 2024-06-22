@@ -69,6 +69,8 @@ Gdy wszystko było przygotowane możnabyło przetestować kod na stowrzonym test
 
 [kliknij aby obejrzeć](https://github.com/AitenAndGo/IPZ/assets/87769038/8e6763ad-770e-4cb4-8f08-51653d83972e "tutaj!")
 
+Całość już połączonego systmu wszytskich elementó można zobaczyć na głównym filmie przedstawiającym cały projekt!. 
+
 
 
 
