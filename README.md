@@ -61,7 +61,7 @@ Najtrudniejszym zadaniem było stworzenie programu do sterowania. Aby przygotowa
 [kliknij aby obejrzeć](https://github.com/AitenAndGo/IPZ/assets/87769038/a0adc0f1-8832-4500-9a60-e44e0641514c "tutaj!")
 
 Następnie gdy samochód był gotowy należało przygotować środowisko na raspberry. W celu instalacji wszystkich bibliotek zaleca się skorzystanie z minicondy i następnie na stworzonym wirtualnym środowisku zainstalować wszystkie wszystkie biblioteki. Ważne jest również aby system był odpowiedi do zainstalowania PyTorch (potrzebny system 64-bitowy). Program składa się z lokalnej strony na której można mieć podgląd na żywo z widoku kamery co jest bardzo pomocne do debugowania błędów. 
-# REMOTLY CONTROLLED CAMERA TEST
+### REMOTLY CONTROLLED CAMERA TEST
 
 [kliknij aby obejrzeć](https://github.com/AitenAndGo/IPZ/assets/87769038/37e9659a-60ab-4ea5-bf75-93e4743b6fed "tutaj!")
 
