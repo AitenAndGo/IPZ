@@ -11,21 +11,26 @@ W ramach kursu *Interdyscyplinarny projekt zespołowy* przez 15 tygodni w grupie
 + stworzenie środowiska po którym będzie poruszał się pojazd
 + stowrzenie systemu świateł drogowych na skrzyżowaniu
 + implementacja oprogramowania z systemem wizyjnym
++ stworzenie bazy danych
++ stworzenie strony internetowej
 
 ## 3. Plan projektu
 Szczegółowy plan projektu dostępny jest [tutaj](https://github.com/AitenAndGo/IPZ/blob/main/Documentation/Plan.txt "tutaj!")
 
-## 4. Technologie
-+ Spis elementów użytych w projekcie
-  - Raspberry Pi 4B
-  - itd
-+ oprogramowanie
-  - NX (lub inny program do projektowania 3D)
-  - Python
-  - itd
+# PROJEKT AUTONOMICZENGO SAMOCHODU:
+[kliknij aby obejrzeć](url_do_filmu)
     
 ___
 # Realizacja
+Realizacja projektu skłądała się na 4 główne etapy:
++ Makieta skrzyżowania
++ Strona internetowa
++ Program strujący makietą miasta
++ program sterujący samochodem
+Wszystkie potrzebne kody i modele znajdują się na [tutaj](https://github.com/AitenAndGo/IPZ "tutaj!"). Teraz opiszę każdy z etapów, aby przybliżyć sposób w jaki projekt został zrealizowany.
+Zaczynajmy!
+##  Makieta
+
 
 # SIMULATION VIDEO:
 [kliknij aby obejrzeć](https://github.com/AitenAndGo/IPZ/assets/87769038/a0adc0f1-8832-4500-9a60-e44e0641514c "tutaj!")
