@@ -59,10 +59,12 @@ Do rozpoznawania znaków użyto biblioteki fastAi, która kożysta z PyTorch. Zo
 Najtrudniejszym zadaniem było stworzenie programu do sterowania. Aby przygotować program jeszcze przed stworzeniem samochodu i dostępem do mikrokomputera została stworzona symulacja w środowisu Unity. Symulacja pozwalała na przygotowanie podstaw skryptu. Działanie skryptu i symulacji przedstawia poniższe nagranie:
 ### SIMULATION VIDEO:
 [kliknij aby obejrzeć](https://github.com/AitenAndGo/IPZ/assets/87769038/a0adc0f1-8832-4500-9a60-e44e0641514c "tutaj!")
+
 Następnie gdy samochód był gotowy należało przygotować środowisko na raspberry. W celu instalacji wszystkich bibliotek zaleca się skorzystanie z minicondy i następnie na stworzonym wirtualnym środowisku zainstalować wszystkie wszystkie biblioteki. Ważne jest również aby system był odpowiedi do zainstalowania PyTorch (potrzebny system 64-bitowy). Program składa się z lokalnej strony na której można mieć podgląd na żywo z widoku kamery co jest bardzo pomocne do debugowania błędów. 
 # REMOTLY CONTROLLED CAMERA TEST
 https://github.com/AitenAndGo/IPZ/assets/87769038/37e9659a-60ab-4ea5-bf75-93e4743b6fed
 Gdy wszystko było przygotowane możnabyło przetestować kod na stowrzonym testowtm torze. Po wielu próbach osiągnięto pozytywne rezultaly co prezentuje poniższy film:
+
 [kliknij aby obejrzeć](https://github.com/AitenAndGo/IPZ/assets/87769038/37e9659a-60ab-4ea5-bf75-93e4743b6fed "tutaj!")
 
 
